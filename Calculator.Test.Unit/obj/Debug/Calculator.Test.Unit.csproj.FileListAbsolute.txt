@@ -1,0 +1,10 @@
+c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator.Test.Unit\bin\Debug\Calculator.Test.Unit.dll
+c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator.Test.Unit\bin\Debug\Calculator.Test.Unit.pdb
+c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator.Test.Unit\bin\Debug\Calculator.exe
+c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator.Test.Unit\bin\Debug\nunit.framework.dll
+c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator.Test.Unit\bin\Debug\nunit.mocks.dll
+c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator.Test.Unit\bin\Debug\Calculator.pdb
+c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator.Test.Unit\bin\Debug\nunit.framework.xml
+c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator.Test.Unit\obj\Debug\Calculator.Test.Unit.csprojResolveAssemblyReference.cache
+c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator.Test.Unit\obj\Debug\Calculator.Test.Unit.dll
+c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator.Test.Unit\obj\Debug\Calculator.Test.Unit.pdb
