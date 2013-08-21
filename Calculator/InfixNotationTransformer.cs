@@ -9,6 +9,11 @@ namespace Calculator
         private readonly Queue<string> _output = new Queue<string>();
         private readonly Stack<string> _operators = new Stack<string>();
 
+        /// <summary>
+        /// Transforms given expression to Reverse Polish Notation. 
+        /// </summary>
+        /// <param name="currentExpression">Expression in infix notation to be transformed</param>
+        /// <returns>Transformed expression</returns>
         public string Transform(string currentExpression)
         {
             List<string> tokens = currentExpression.Split(new[] { ' ' }).ToList();

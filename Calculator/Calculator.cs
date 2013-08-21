@@ -8,7 +8,7 @@ namespace Calculator
     public class Calculator
     {
         private InfixNotationTransformer transformer = new InfixNotationTransformer();
-
+        
         public string TransformFromInfixToRPN(string formula)
         {
             return transformer.Transform(formula);
@@ -60,7 +60,7 @@ namespace Calculator
                                 break;
                             }
                         default:
-                            throw new Exception("Error calculating expression!");
+                            throw new ArgumentException("Error calculating expression!");
                     }
                 }
             }

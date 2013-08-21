@@ -16,13 +16,20 @@ namespace Calculator.Test.Unit
         }
 
         [TestCase("2 5 4 * + 3 5 / +", "22.6")]
-        [TestCase("3 4 2 * 1 5 - 2 3 ^ ^ / +", "3.0001220703125")]
+        [TestCase("3 4 2 * 1 5 - 2 3 pow ^ / +", "3.0001220703125")]
         public void Evaluate_EvaluateRPNExpression_ReturnsEvaluatedExpression(string rpnExpression, string expected)
         {
             var calc = new Calculator();
             var result = calc.CalculateRPN(rpnExpression);
             Assert.AreEqual(expected, result);
         }
-    
+
+        [Test]
+        [ExpectedException(typeof(System.ArgumentException), ExpectedMessage = "Error calculating expression!")]
+        public void EvaluateRPNExpression_TryEvaluateNotValidExpression_ThrowsException()
+        {
+            var calc = new Calculator();
+            calc.CalculateRPN("2 5 4 * + 3 5 test / +");
+        }
     }
 }
