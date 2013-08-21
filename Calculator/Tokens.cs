@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Calculator
 {
-    class Tokens
+    public class Tokens
     {
         private const string Operators = "+-=!^*/%";
         private const string RightOperators = "=!^";
