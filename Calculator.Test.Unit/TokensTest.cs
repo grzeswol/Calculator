@@ -14,43 +14,44 @@ namespace Calculator.Test.Unit
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException), ExpectedMessage = "test is invalid operator!")]
         public void GetPrecedenceFor_SetInvalidOperator_ThrowsInvalidOperationException()
         {
             var tokens = new Tokens();
-            tokens.GetPrecedenceFor("test");
+            InvalidOperationException exception =
+                Assert.Throws<InvalidOperationException>(() => tokens.GetPrecedenceFor("test"));
+            Assert.AreEqual("test is invalid operator!", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException), ExpectedMessage = "Incorrect operator!")]
         public void IsLeftAssociative_SetOperatorLongerThan1_ThrowsArgumentException()
         {
             var tokens = new Tokens();
-            tokens.IsLeftAssociative("++");
+            var exception = Assert.Throws<ArgumentException>(() => tokens.IsLeftAssociative("++"));
+            Assert.AreEqual("Incorrect operator!", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException), ExpectedMessage = "Incorrect operator!")]
         public void IsLeftAssociative_SetNullOperator_ThrowsArgumentException()
         {
             var tokens = new Tokens();
-            tokens.IsLeftAssociative(null);
+            var exception = Assert.Throws<ArgumentException>(() => tokens.IsLeftAssociative(null));
+            Assert.AreEqual("Incorrect operator!", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException), ExpectedMessage = "Incorrect operator!")]
         public void IsRightAssociative_SetOperatorLongerThan1_ThrowsArgumentException()
         {
             var tokens = new Tokens();
-            tokens.IsRightAssociative("++");
+            var exception = Assert.Throws<ArgumentException>(() => tokens.IsRightAssociative("++"));
+            Assert.AreEqual("Incorrect operator!", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException), ExpectedMessage = "Incorrect operator!")]
         public void IsRightAssociative_SetNullOperator_ThrowsArgumentException()
         {
             var tokens = new Tokens();
-            tokens.IsRightAssociative(null);
+            var exception = Assert.Throws<ArgumentException>(() => tokens.IsRightAssociative(null));
+            Assert.AreEqual("Incorrect operator!", exception.Message);
         }
     }
 }

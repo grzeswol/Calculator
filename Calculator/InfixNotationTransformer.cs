@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Calculator
 {
-    class InfixNotationTransformer
+    public class InfixNotationTransformer
     {
         private readonly Tokens _tokens = new Tokens();
         private readonly Queue<string> _output = new Queue<string>();

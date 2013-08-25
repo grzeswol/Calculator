@@ -6,3 +6,4 @@ c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator\obj\D
 c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator\obj\Debug\Calculator.csproj.GenerateResource.Cache
 c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator\obj\Debug\Calculator.exe
 c:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator\obj\Debug\Calculator.pdb
+C:\Users\grzes\Documents\Visual Studio 2012\Projects\Calculator\Calculator\obj\Debug\Calculator.Form1.resources

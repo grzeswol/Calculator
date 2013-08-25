@@ -9,7 +9,7 @@ namespace Calculator
         private const string RightOperators = "=!^";
         private const string LeftOperators = "+-*/%";
 
-        private Dictionary<string,int> _operatorsPrecedence = new Dictionary<string, int>
+        private readonly Dictionary<string,int> _operatorsPrecedence = new Dictionary<string, int>
             {
                 {"=",1},
                 {"+-",2},
@@ -56,8 +56,8 @@ namespace Calculator
         /// <returns>True if string is a number</returns>
         public bool IsNumber(string s)
         {
-            int result;
-            return int.TryParse(s, out result);
+            double result;
+            return double.TryParse(s, out result);
         }
 
         /// <summary>

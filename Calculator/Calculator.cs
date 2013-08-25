@@ -7,13 +7,6 @@ namespace Calculator
 {
     public class Calculator
     {
-        private InfixNotationTransformer transformer = new InfixNotationTransformer();
-        
-        public string TransformFromInfixToRPN(string formula)
-        {
-            return transformer.Transform(formula);
-        }
-
         public string CalculateRPN(string rpn)
         {
             List<string> rpnTokens = rpn.Split(' ').ToList();
@@ -28,44 +21,52 @@ namespace Calculator
                 }
                 else
                 {
-                    switch (token)
+                    try
                     {
-                        case "^":
-                        case "pow":
-                            {
-                                number = stack.Pop();
-                                stack.Push((decimal)Math.Pow((double)stack.Pop(), (double)number));
-                                break;
-                            }
-                        case "*":
-                            {
-                                stack.Push(stack.Pop() * stack.Pop());
-                                break;
-                            }
-                        case "/":
-                            {
-                                number = stack.Pop();
-                                stack.Push(stack.Pop() / number);
-                                break;
-                            }
-                        case "+":
-                            {
-                                stack.Push(stack.Pop() + stack.Pop());
-                                break;
-                            }
-                        case "-":
-                            {
-                                number = stack.Pop();
-                                stack.Push(stack.Pop() - number);
-                                break;
-                            }
-                        default:
-                            throw new ArgumentException("Error calculating expression!");
+                        switch (token)
+                        {
+                            case "^":
+                            case "pow":
+                                {
+                                    number = stack.Pop();
+                                    stack.Push((decimal)Math.Pow((double)stack.Pop(), (double)number));
+                                    break;
+                                }
+                            case "*":
+                                {
+                                    stack.Push(stack.Pop() * stack.Pop());
+                                    break;
+                                }
+                            case "/":
+                                {
+                                    number = stack.Pop();
+                                    stack.Push(stack.Pop() / number);
+                                    break;
+                                }
+                            case "+":
+                                {
+                                    stack.Push(stack.Pop() + stack.Pop());
+                                    break;
+                                }
+                            case "-":
+                                {
+                                    number = stack.Pop();
+                                    stack.Push(stack.Pop() - number);
+                                    break;
+                                }
+                            default:
+                                throw new ArgumentException("Error calculating expression!");
+                        }
                     }
+                    catch (OverflowException ex)
+                    {
+                        throw ex;
+                    }
+                    
                 }
             }
 
-            return stack.Pop().ToString(CultureInfo.InvariantCulture);
+            return stack.Pop().ToString(CultureInfo.CurrentCulture);
         }
 
         
