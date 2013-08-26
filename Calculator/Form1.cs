@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Calculator
@@ -7,12 +10,15 @@ namespace Calculator
     {
         readonly Calculator _calculator = new Calculator();
         readonly InfixNotationTransformer _infix = new InfixNotationTransformer();
+        readonly Tokens _tokens = new Tokens();
         private string _result;
 
         public Form1()
         {
             InitializeComponent();
         }
+
+        #region Buttons
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -198,9 +204,89 @@ namespace Calculator
             }
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void button20_Click(object sender, EventArgs e)
         {
-
+            richTextBox1.Text = @"0";
         }
+
+        #endregion
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    var result = ConvertExpressionFromTextBox(NumericSystems.Binary);
+                    richTextBox1.Text = result;
+                }
+            } 
+        }
+
+        private string ConvertExpressionFromTextBox(NumericSystems numericSystems)
+        {
+            List<string> tokenList = new List<string>();
+            tokenList.Clear();
+            tokenList = richTextBox1.Text.Split(' ').ToList();
+
+            for (int i = 0; i < tokenList.Count; i++)
+            {
+                if (_tokens.IsNumber(tokenList[i]))
+                {
+                    int index = tokenList.IndexOf(tokenList[i]);
+                    tokenList[index] = ConvertToGivenNumericSystem(tokenList[i], numericSystems);
+                }
+            }
+
+            string result = string.Join(" ", tokenList);
+            return result;
+        }
+
+        private string ConvertToGivenNumericSystem(string s, NumericSystems numericSystems)
+        {
+            string result = "";
+            try
+            {
+                int number = int.Parse(s);
+                switch (numericSystems)
+                {
+                    case NumericSystems.Binary:
+                        result = Convert.ToString(number, 2);
+                        break;
+                    case NumericSystems.Decimal:
+                        result = Convert.ToInt32(number.ToString(CultureInfo.CurrentCulture), 2).ToString(CultureInfo.CurrentCulture);
+                        break;
+                }
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show(@"The number is too big!");
+                return "0";
+            }
+
+            return result;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    var result = ConvertExpressionFromTextBox(NumericSystems.Decimal);
+                    richTextBox1.Text = result;
+                }
+            } 
+        }
+
+        
+    }
+
+    enum NumericSystems
+    {
+        Decimal,
+        Binary,
     }
 }
