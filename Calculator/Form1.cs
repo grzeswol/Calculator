@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -248,14 +247,13 @@ namespace Calculator
             string result = "";
             try
             {
-                int number = int.Parse(s);
                 switch (numericSystems)
                 {
                     case NumericSystems.Binary:
-                        result = Convert.ToString(number, 2);
+                        result = Convert.ToString(Convert.ToInt32(s, 10), 2);
                         break;
                     case NumericSystems.Decimal:
-                        result = Convert.ToInt32(number.ToString(CultureInfo.CurrentCulture), 2).ToString(CultureInfo.CurrentCulture);
+                        result = Convert.ToString(Convert.ToInt32(s, 2), 10);
                         break;
                 }
             }
